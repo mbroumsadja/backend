@@ -1,5 +1,4 @@
-GET http://localhost:3000/
+GET http://localhost:10000/
 
 ###
-
-POST http://localhost:3000/cm-uga-23fs0294
+POST http://localhost:10000/cm-uga-23fs0294

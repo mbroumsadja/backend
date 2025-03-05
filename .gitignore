@@ -6,6 +6,8 @@ node_modules/
 
 # Ignore environment variables file
 .env
+scheduleTESTE.rest
+./config/local.js
 
 # Ignore temporary files
 *.tmp
