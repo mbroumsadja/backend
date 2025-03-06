@@ -2,51 +2,50 @@ import { DataTypes } from "sequelize";
 // import sequelize from "../config/db.js";
 import sequelize from "../config/local.js";
 const User = sequelize.define('user', {
-    id:{
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    matricule:{
+    matricule: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-   nom:{
+    nom: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    prenom:{
+    prenom: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    numero: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     email:{
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
-    numero:{
+    filiere: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    password:{
+    niveau: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
-    departement:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    filiere:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    niveau:{
-        type: DataTypes.STRING,
-        allowNull: false,   
-    },
-    },{timestamps:true});
+}, {
+    timestamps: true,
+    indexes: [
+        {
+          unique:true,
+          fields: ['matricule','email'],
+        },
+      ]
+});
 
- await User.sync({alter:true, force: false});
+await User.sync({ alter: true, force: false });
 
 export default User;
 

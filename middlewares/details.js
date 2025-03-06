@@ -18,7 +18,10 @@ export function information(matricule) {
     };
 
     const facultyMap = {
-        'fs': 'Faculté des Sciences'
+        'fs': 'Faculté des Sciences',
+        'in': 'informatique',
+        'rt':'reseau et telecom',
+        'gc':'genie civile'
     };
 
     const currentYear = getYear(new Date()) % 100;

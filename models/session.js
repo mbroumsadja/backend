@@ -12,7 +12,7 @@ const Session = sequelize.define('session', {
         allowNull: false,
     },
     jour: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     lieu: {
@@ -20,11 +20,11 @@ const Session = sequelize.define('session', {
         allowNull: false,
     },
     debut: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     fin: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     enseignant: {
@@ -42,8 +42,10 @@ const Session = sequelize.define('session', {
     support: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "aucun"
     }
 }, { timestamps: true });
 
-await Session.sync({ alter: true , force:false});
+await Session.sync({ alter: true , force: false});
+
 export default Session;
