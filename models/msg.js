@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import sequelize from "../config/local.js";
+import sequelize from "../config/db.js";
 import User from "./user.js";
 
 const Message = sequelize.define('message',{

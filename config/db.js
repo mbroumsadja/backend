@@ -7,9 +7,10 @@ const sequelize = new Sequelize(process.env.db_url, {
     ssl: {
       require: false,
       rejectUnauthorized: false
-    }
+    },
+    connectTimeout: 60000 
   },
-  logging: true
+  logging: false
 });
 
 sequelize.authenticate()

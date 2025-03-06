@@ -1,4 +1,4 @@
-import sequelize from "../config/local.js";
+import sequelize from "../config/db.js";
 import { DataTypes } from "sequelize";
 const Admin = sequelize.define("admin",{
         id: {
