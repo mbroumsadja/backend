@@ -9,7 +9,8 @@ node_modules/
 scheduleTESTE.rest
 
 # Ignore local configuration file
-../../config/local.js
+config/local.js
+config/*.local.js
 
 # Ignore temporary files
 *.tmp
