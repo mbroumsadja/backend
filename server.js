@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors';
 import morgan from 'morgan';
-import "./routes/_init.js";
+
 import User from './models/user.js';
 import Session from './models/session.js';
 import Message from './models/msg.js';

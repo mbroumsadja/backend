@@ -3,24 +3,3 @@ node_modules/
 
 # Ignore log files
 *.log
-
-# Ignore environment variables file
-.env
-scheduleTESTE.rest
-
-# Ignore local configuration file
-config/local.js
-config/*.local.js
-
-# Ignore temporary files
-*.tmp
-*.swp
-
-# Ignore OS generated files
-.DS_Store
-Thumbs.db
-
-# Ignore IDE specific files
-.vscode/
-.idea/
-*.iml

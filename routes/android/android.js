@@ -10,7 +10,7 @@ const android = express.Router();
 const validateMatricule = (req, res, next) => {
   const { matricule } = req.params;
   
-  // Fonction de validation (à définir selon vos règles)
+
   const validationResult = validateMatriculeFormat(matricule);
   
   if (!validationResult.isValid) {
@@ -23,7 +23,7 @@ const validateMatricule = (req, res, next) => {
   next();
 };
 
-// Fonction de validation du format du matricule (à adapter selon vos règles)
+
 function validateMatriculeFormat(matricule) {
   const regex = /^[A-Za-z]{2}-[A-Za-z]{3}-\d{2}[A-Za-z]{2}\d{4}$/i;
 
@@ -34,7 +34,6 @@ function validateMatriculeFormat(matricule) {
   return { isValid: true };
 }
 
-// Fonction utilitaire pour formater les données étudiant
 const formatStudentData = (user) => ({
   nom: user.nom,
   prenom: user.prenom,
@@ -43,7 +42,6 @@ const formatStudentData = (user) => ({
   filiere: user.filiere
 });
 
-// Fonction utilitaire pour formater les séances
 const formatSessionData = (sessions) => 
   sessions.map(session => ({
     id: session.id,
@@ -57,7 +55,6 @@ const formatSessionData = (sessions) =>
     support: session.support
   }));
 
-// Fonction utilitaire pour obtenir les dates de la semaine actuelle
 const getCurrentWeekDates = () => {
   const currentDate = new Date();
   const start = startOfWeek(currentDate, { weekStartsOn: 1 }); // Lundi
@@ -69,7 +66,6 @@ const getCurrentWeekDates = () => {
   };
 };
 
-// Route d'accueil
 android.get('/', (req, res) => {
   res.status(200).json({
     success: true,
@@ -78,7 +74,7 @@ android.get('/', (req, res) => {
   });
 });
 
-// Route pour obtenir les données d'un étudiant et ses séances
+
 android.get('/:matricule', validateMatricule, async (req, res) => {
   const { matricule } = req.params;
   
@@ -140,107 +136,4 @@ android.get('/:matricule', validateMatricule, async (req, res) => {
 });
 
 
-// await Session.bulkCreate([
-//   {
-//     "cours": "Algorithmique avancée",
-//     "jour": "04-03-2025",
-//     "lieu": "Salle A101",
-//     "debut": "08h00",
-//     "fin": "10h00",
-//     "enseignant": "Pr. Ndongo",
-//     "filiere": "informatique",
-//     "niveau": 1
-//   },
-//   {
-//     "cours": "Circuits électriques",
-//     "jour": "05-03-2025",
-//     "lieu": "Salle B23",
-//     "debut": "10h30",
-//     "fin": "12h30",
-//     "enseignant": "Dr. Kamdem",
-//     "filiere": "genie electrique",
-//     "niveau": 2
-//   },
-//   {
-//     "cours": "Mécanique des structures",
-//     "jour": "06-03-2025",
-//     "lieu": "Salle C12",
-//     "debut": "14h00",
-//     "fin": "16h00",
-//     "enseignant": "Mme. Tchinda",
-//     "filiere": "genie civile",
-//     "niveau": 3
-//   },
-//   {
-//     "cours": "Forage pétrolier",
-//     "jour": "07-03-2025",
-//     "lieu": "Salle D8",
-//     "debut": "09h00",
-//     "fin": "11h00",
-//     "enseignant": "Dr. Ngono",
-//     "filiere": "genie petrolier",
-//     "niveau": 4
-//   },
-//   {
-//     "cours": "Réseaux avancés",
-//     "jour": "08-03-2025",
-//     "lieu": "Salle E4",
-//     "debut": "08h00",
-//     "fin": "10h00",
-//     "enseignant": "Pr. Mbarga",
-//     "filiere": "reseaux et telecom",
-//     "niveau": 2
-//   },
-//   {
-//     "cours": "Intelligence Artificielle",
-//     "jour": "03-03-2025",
-//     "lieu": "Salle A305",
-//     "debut": "15h00",
-//     "fin": "17h00",
-//     "enseignant": "Dr. Fouda",
-//     "filiere": "informatique",
-//     "niveau": 4
-//   },
-//   {
-//     "cours": "Systèmes embarqués",
-//     "jour": "04-03-2025",
-//     "lieu": "Salle B45",
-//     "debut": "13h00",
-//     "fin": "15h00",
-//     "enseignant": "Dr. Kenfack",
-//     "filiere": "genie electrique",
-//     "niveau": 3
-//   },
-//   {
-//     "cours": "Béton armé",
-//     "jour": "06-03-2025",
-//     "lieu": "Salle C22",
-//     "debut": "10h30",
-//     "fin": "12h30",
-//     "enseignant": "Pr. Kouam",
-//     "filiere": "genie civile",
-//     "niveau": 1
-//   },
-//   {
-//     "cours": "Géologie pétrolière",
-//     "jour": "09-03-2025",
-//     "lieu": "Salle D5",
-//     "debut": "14h00",
-//     "fin": "16h00",
-//     "enseignant": "Mme. Essomba",
-//     "filiere": "genie petrolier",
-//     "niveau": 2
-//   },
-//   {
-//     "cours": "Sécurité des réseaux",
-//     "jour": "05-03-2025",
-//     "lieu": "Salle E12",
-//     "debut": "16h00",
-//     "fin": "18h00",
-//     "enseignant": "Dr. Talla",
-//     "filiere": "reseaux et telecom",
-//     "niveau": 3
-//   }
-// ]
-// )
 export default android;

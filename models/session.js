@@ -43,7 +43,13 @@ const Session = sequelize.define('session', {
         allowNull: false,
         defaultValue: "aucun"
     }
-}, { timestamps: true });
+}, { timestamps: true,
+    indexes:[
+        { 
+            fields:["niveau","filiere"]
+        }
+    ]
+ });
 
 await Session.sync({ alter: true , force: false});
 

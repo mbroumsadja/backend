@@ -1,3 +1,0 @@
-GET http://localhost:10000/
-###
-GET  http://localhost:10000/cm-uga-24in0221
