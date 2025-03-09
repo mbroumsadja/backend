@@ -1,21 +1,20 @@
 import express from 'express'
 import cors from 'cors';
 import morgan from 'morgan';
-
-import User from './models/user.js';
-import Session from './models/session.js';
-import Message from './models/msg.js';
-
+import 'dotenv/config';
+import './models/sync.js';
 import android from './routes/android/android.js';
+import web from './routes/web/web.js';
 
 const app = express();
-const port = 10000;
+const port = process.env.port;
 
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(morgan('dev'));
 
+app.use(web);
 app.use(android)
 app.listen(port,()=>{
     console.log( `le serveur tourne sur le port ${port}`);

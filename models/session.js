@@ -51,6 +51,4 @@ const Session = sequelize.define('session', {
     ]
  });
 
-await Session.sync({ alter: true , force: false});
-
 export default Session;

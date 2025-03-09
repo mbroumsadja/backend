@@ -1,22 +1,11 @@
 import express from 'express';
+import { loginA } from '../../controllers/login.js';
+import { signupA, signupU } from '../../controllers/signup.js';
 
 const web = express.Router();
 
-web.post('/login/user',(req,res)=>{
-
-});
-
-web.post('/signup/user/',(req,res)=>{
-
-});
-web.post('/login/admin',(req,res)=>{
-
-});
-
-web.post('/signup/admin',(req,res)=>{
-
-});
-
-
+web.post('/signup/admin/',signupA);
+web.post('/login/admin',loginA)
+web.post('/signup/user',signupU);
 
 export default web;

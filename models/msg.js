@@ -23,6 +23,4 @@ const Message = sequelize.define('message',{
     }
 },{timestamps:true});
 
-await Message.sync({alter:true, force: false});
-
 export default Message

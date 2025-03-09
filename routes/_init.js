@@ -231,27 +231,127 @@ const sampleUsers = [
       niveau: 3
     }
   ];
+
+  const free_data =[
+    {
+      "cours": "Algorithmique avancée",
+      "jour": "04-03-2025",
+      "lieu": "Salle A101",
+      "debut": "08h00",
+      "fin": "10h00",
+      "enseignant": "Pr. Ndongo",
+      "filiere": "informatique",
+      "niveau": 1
+    },
+    {
+      "cours": "Circuits électriques",
+      "jour": "05-03-2025",
+      "lieu": "Salle B23",
+      "debut": "10h30",
+      "fin": "12h30",
+      "enseignant": "Dr. Kamdem",
+      "filiere": "genie electrique",
+      "niveau": 2
+    },
+    {
+      "cours": "Mécanique des structures",
+      "jour": "06-03-2025",
+      "lieu": "Salle C12",
+      "debut": "14h00",
+      "fin": "16h00",
+      "enseignant": "Mme. Tchinda",
+      "filiere": "genie civile",
+      "niveau": 3
+    },
+    {
+      "cours": "Forage pétrolier",
+      "jour": "07-03-2025",
+      "lieu": "Salle D8",
+      "debut": "09h00",
+      "fin": "11h00",
+      "enseignant": "Dr. Ngono",
+      "filiere": "genie petrolier",
+      "niveau": 4
+    },
+    {
+      "cours": "Réseaux avancés",
+      "jour": "08-03-2025",
+      "lieu": "Salle E4",
+      "debut": "08h00",
+      "fin": "10h00",
+      "enseignant": "Pr. Mbarga",
+      "filiere": "reseaux et telecom",
+      "niveau": 2
+    },
+    {
+      "cours": "Intelligence Artificielle",
+      "jour": "03-03-2025",
+      "lieu": "Salle A305",
+      "debut": "15h00",
+      "fin": "17h00",
+      "enseignant": "Dr. Fouda",
+      "filiere": "informatique",
+      "niveau": 4
+    },
+    {
+      "cours": "Systèmes embarqués",
+      "jour": "04-03-2025",
+      "lieu": "Salle B45",
+      "debut": "13h00",
+      "fin": "15h00",
+      "enseignant": "Dr. Kenfack",
+      "filiere": "genie electrique",
+      "niveau": 3
+    },
+    {
+      "cours": "Béton armé",
+      "jour": "06-03-2025",
+      "lieu": "Salle C22",
+      "debut": "10h30",
+      "fin": "12h30",
+      "enseignant": "Pr. Kouam",
+      "filiere": "genie civile",
+      "niveau": 1
+    },
+    {
+      "cours": "Géologie pétrolière",
+      "jour": "09-03-2025",
+      "lieu": "Salle D5",
+      "debut": "14h00",
+      "fin": "16h00",
+      "enseignant": "Mme. Essomba",
+      "filiere": "genie petrolier",
+      "niveau": 2
+    },
+    {
+      "cours": "Sécurité des réseaux",
+      "jour": "05-03-2025",
+      "lieu": "Salle E12",
+      "debut": "16h00",
+      "fin": "18h00",
+      "enseignant": "Dr. Talla",
+      "filiere": "reseaux et telecom",
+      "niveau": 3
+    }
+  ]
   
-  // CODE POUR INSÉRER LES DONNÉES
+  
   async function initializeData() {
     try {
-      // Insertion des utilisateurs étudiants
       await User.bulkCreate(sampleUsers);
       console.log("Étudiants créés avec succès");
       
-      // Insertion des administrateurs
       await Admin.bulkCreate(sampleAdmins);
       console.log("Administrateurs créés avec succès");
       
-      // Insertion des sessions
       await Session.bulkCreate([
         ...sampleInformatique1Sessions,
         ...sampleInformatique2Sessions,
         ...sampleGenieCivil2Sessions,
-        ...sampleReseauxTelecom3Sessions
+        ...sampleReseauxTelecom3Sessions,
+        ...free_data
       ]);
       console.log("Sessions créées avec succès");
-      
       console.log("Initialisation des données terminée");
     } catch (error) {
       console.error("Erreur lors de l'initialisation des données:", error);
@@ -259,109 +359,3 @@ const sampleUsers = [
   }
   
   initializeData();
-  // Vous pouvez appeler cette fonction pour initialiser les données
-  // initializeData();
-
-  await Session.bulkCreate([
-  {
-    "cours": "Algorithmique avancée",
-    "jour": "04-03-2025",
-    "lieu": "Salle A101",
-    "debut": "08h00",
-    "fin": "10h00",
-    "enseignant": "Pr. Ndongo",
-    "filiere": "informatique",
-    "niveau": 1
-  },
-  {
-    "cours": "Circuits électriques",
-    "jour": "05-03-2025",
-    "lieu": "Salle B23",
-    "debut": "10h30",
-    "fin": "12h30",
-    "enseignant": "Dr. Kamdem",
-    "filiere": "genie electrique",
-    "niveau": 2
-  },
-  {
-    "cours": "Mécanique des structures",
-    "jour": "06-03-2025",
-    "lieu": "Salle C12",
-    "debut": "14h00",
-    "fin": "16h00",
-    "enseignant": "Mme. Tchinda",
-    "filiere": "genie civile",
-    "niveau": 3
-  },
-  {
-    "cours": "Forage pétrolier",
-    "jour": "07-03-2025",
-    "lieu": "Salle D8",
-    "debut": "09h00",
-    "fin": "11h00",
-    "enseignant": "Dr. Ngono",
-    "filiere": "genie petrolier",
-    "niveau": 4
-  },
-  {
-    "cours": "Réseaux avancés",
-    "jour": "08-03-2025",
-    "lieu": "Salle E4",
-    "debut": "08h00",
-    "fin": "10h00",
-    "enseignant": "Pr. Mbarga",
-    "filiere": "reseaux et telecom",
-    "niveau": 2
-  },
-  {
-    "cours": "Intelligence Artificielle",
-    "jour": "03-03-2025",
-    "lieu": "Salle A305",
-    "debut": "15h00",
-    "fin": "17h00",
-    "enseignant": "Dr. Fouda",
-    "filiere": "informatique",
-    "niveau": 4
-  },
-  {
-    "cours": "Systèmes embarqués",
-    "jour": "04-03-2025",
-    "lieu": "Salle B45",
-    "debut": "13h00",
-    "fin": "15h00",
-    "enseignant": "Dr. Kenfack",
-    "filiere": "genie electrique",
-    "niveau": 3
-  },
-  {
-    "cours": "Béton armé",
-    "jour": "06-03-2025",
-    "lieu": "Salle C22",
-    "debut": "10h30",
-    "fin": "12h30",
-    "enseignant": "Pr. Kouam",
-    "filiere": "genie civile",
-    "niveau": 1
-  },
-  {
-    "cours": "Géologie pétrolière",
-    "jour": "09-03-2025",
-    "lieu": "Salle D5",
-    "debut": "14h00",
-    "fin": "16h00",
-    "enseignant": "Mme. Essomba",
-    "filiere": "genie petrolier",
-    "niveau": 2
-  },
-  {
-    "cours": "Sécurité des réseaux",
-    "jour": "05-03-2025",
-    "lieu": "Salle E12",
-    "debut": "16h00",
-    "fin": "18h00",
-    "enseignant": "Dr. Talla",
-    "filiere": "reseaux et telecom",
-    "niveau": 3
-  }
-]
-)

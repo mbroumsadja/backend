@@ -1,30 +1,29 @@
 import express from 'express';
-import { information } from '../../middlewares/details.js';
 import User from '../../models/user.js';
 import Session from '../../models/session.js';
 import { startOfWeek, endOfWeek ,format} from 'date-fns';
 import { Op } from 'sequelize';
 import {fr} from 'date-fns/locale'
+import {formatStudentData,formatSessionData } from '../../utils/format.js';
+// import '../_init.js';
 const android = express.Router();
 
 const validateMatricule = (req, res, next) => {
   const { matricule } = req.params;
   
-
   const validationResult = validateMatriculeFormat(matricule);
-  
+
+
   if (!validationResult.isValid) {
     return res.status(400).json({ 
       success: false,
       message: validationResult.message || "Matricule invalide" 
     });
   }
-  
   next();
 };
 
-
-function validateMatriculeFormat(matricule) {
+export function validateMatriculeFormat(matricule) {
   const regex = /^[A-Za-z]{2}-[A-Za-z]{3}-\d{2}[A-Za-z]{2}\d{4}$/i;
 
   if (!matricule || !regex.test(matricule)) {
@@ -33,27 +32,6 @@ function validateMatriculeFormat(matricule) {
 
   return { isValid: true };
 }
-
-const formatStudentData = (user) => ({
-  nom: user.nom,
-  prenom: user.prenom,
-  numero: user.numero,
-  niveau: `${user.niveau} année`,
-  filiere: user.filiere
-});
-
-const formatSessionData = (sessions) => 
-  sessions.map(session => ({
-    id: session.id,
-    cours: session.cours,
-    jour: session.jour,
-    lieu: session.lieu,
-    debut: session.debut,
-    fin: session.fin,
-    filiere: session.filiere,
-    enseignant: session.enseignant,
-    support: session.support
-  }));
 
 const getCurrentWeekDates = () => {
   const currentDate = new Date();
@@ -92,10 +70,8 @@ android.get('/:matricule', validateMatricule, async (req, res) => {
       });
     }
     
-    // Obtention des dates de la semaine
     const { start: startDate, end: endDate } = getCurrentWeekDates();
     
-    // Recherche des séances pour la semaine
     const sessions = await Session.findAll({
       where: {
         jour: {
@@ -107,12 +83,11 @@ android.get('/:matricule', validateMatricule, async (req, res) => {
       order: [['jour', 'ASC'], ['debut', 'ASC']]
     });
 
-    // Construction de la réponse
     res.status(200).json({
       success: true,
       data: {
         student: formatStudentData(user),
-        weekRange: {
+        semaine: {
           debut: startDate,
           fin: endDate
         },
@@ -134,6 +109,5 @@ android.get('/:matricule', validateMatricule, async (req, res) => {
     });
   }
 });
-
 
 export default android;

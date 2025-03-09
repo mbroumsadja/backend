@@ -1,5 +1,6 @@
 import sequelize from "../config/db.js";
 import { DataTypes } from "sequelize";
+
 const Admin = sequelize.define("admin",{
         id: {
             type: DataTypes.INTEGER,
@@ -26,9 +27,12 @@ const Admin = sequelize.define("admin",{
         departement:{
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        password:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
         }
 });
-
-await Admin.sync({alter: true, force: false});
 
 export default Admin;
