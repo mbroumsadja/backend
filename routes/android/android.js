@@ -57,6 +57,7 @@ android.get('/:matricule', validateMatricule, async (req, res) => {
   const { matricule } = req.params;
   
   try {
+    matricule = matricule.toUpperCase();
     // Recherche de l'utilisateur
     const user = await User.findOne({
       where: { matricule },

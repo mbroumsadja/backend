@@ -5,6 +5,7 @@ import 'dotenv/config';
 import './models/sync.js';
 import android from './routes/android/android.js';
 import web from './routes/web/web.js';
+import { all } from './debug/all.js';
 
 const app = express();
 const port = process.env.port;

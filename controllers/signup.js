@@ -51,6 +51,7 @@ export const signupA = async (req, res)=>{
 export const signupU = async (req,res)=>{
     const {matricule, nom, prenom, email ,numero} = req.body;
     try {
+        matricule = matricule.toUpperCase();
        const teste = validateMatriculeFormat(matricule);
        if(teste.isValid){
         const findUser = await User.findOne({where:{matricule:matricule}});
@@ -62,6 +63,7 @@ export const signupU = async (req,res)=>{
             });
         }
         const user = information(matricule)
+
         const student = await User.create({
             matricule,
             nom,
@@ -78,7 +80,8 @@ export const signupU = async (req,res)=>{
             url:"",
             student:{
                 nom: student.nom,
-                matricule: student.matricule
+                matricule: student.matricule,
+                filiere: user.filiere,
             },
             url:""
         });
