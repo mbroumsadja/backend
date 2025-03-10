@@ -51,7 +51,7 @@ export const signupA = async (req, res)=>{
 export const signupU = async (req,res)=>{
     const {matricule, nom, prenom, email ,numero} = req.body;
     try {
-        matricule = matricule.toUpperCase();
+        matricule.toUpperCase();
        const teste = validateMatriculeFormat(matricule);
        if(teste.isValid){
         const findUser = await User.findOne({where:{matricule:matricule}});
