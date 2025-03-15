@@ -34,7 +34,6 @@ const sequelize = new Sequelize(process.env.db_url, {
       require: true,
       rejectUnauthorized: false
     },
-    connectTimeout: 60000 
   },
   logging: false
 });

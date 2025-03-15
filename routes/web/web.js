@@ -6,6 +6,7 @@ const web = express.Router();
 
 web.post('/signup/admin/',signupA);
 web.post('/login/admin',loginA)
+
 web.post('/signup/user',signupU);
 
 export default web;

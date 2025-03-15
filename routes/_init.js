@@ -336,7 +336,7 @@ const sampleUsers = [
   ]
   
   
-  async function initializeData() {
+ export async function initializeData() {
     try {
       await User.bulkCreate(sampleUsers);
       console.log("Étudiants créés avec succès");
@@ -357,5 +357,3 @@ const sampleUsers = [
       console.error("Erreur lors de l'initialisation des données:", error);
     }
   }
-  
-  initializeData();

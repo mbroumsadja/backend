@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 import Admin from "../models/admin.js";
 import { information } from "../middlewares/details.js";
-import { validateMatriculeFormat } from "../routes/android/android.js";
+import { validateMatriculeFormat } from "../middlewares/matricule_validate.js";
 import { isValid } from "date-fns";
 export const signupA = async (req, res)=>{
     const {nom , prenom, numero , email , password, departement} = req.body
@@ -30,7 +30,7 @@ export const signupA = async (req, res)=>{
 
         return res.status(200).json({ 
             success: true,
-            message: `Votre compte été bien créé monsieur ${admin.prenom}`,
+            message: `Votre compte a été créé monsieur ${admin.prenom}`,
             user:{
                 nom:admin.nom,
                 departement: admin.departement
@@ -49,7 +49,7 @@ export const signupA = async (req, res)=>{
     }
 
 export const signupU = async (req,res)=>{
-    const {matricule, nom, prenom, email ,numero} = req.body;
+    const {matricule, nom, prenom, email ,numero,filiere} = req.body;
     try {
         matricule.toUpperCase();
        const teste = validateMatriculeFormat(matricule);
@@ -70,7 +70,7 @@ export const signupU = async (req,res)=>{
             prenom,
             numero,
             email,
-            filiere: user.filiere,
+            filiere: filiere,
             niveau: user.niveau
         });
 
@@ -81,9 +81,8 @@ export const signupU = async (req,res)=>{
             student:{
                 nom: student.nom,
                 matricule: student.matricule,
-                filiere: user.filiere,
+                filiere: filiere
             },
-            url:""
         });
        }else{
         return res.status(404).json({

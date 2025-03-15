@@ -1,0 +1,40 @@
+GET http://backend-61io.onrender.com/cm-uga-23in0105
+###
+
+GET http://localhost:10000/
+###
+
+POST http://localhost:10000/login/admin
+Content-Type: application/json
+
+{
+    "nom":"mbroumsadja",
+    "password":"adminPasswor8789"
+}
+
+###
+POST http://localhost:10000/signup/admin
+Content-Type: application/json
+
+{
+    "nom": "mbroumsadja",
+    "prenom": "emmanuel",
+    "numero": "699887578",
+    "email": "m.abdouM@admin.uga.cm",
+    "password": "adminPasswor8789",
+    "departement":"biochimie"
+}
+
+###
+
+POST http://localhost:10000/signup/user
+Content-Type: application/json
+
+{
+    "matricule": "cm-uga-23FS0295",
+    "nom":"mbroumsadja",
+    "prenom":"emmanuel",
+    "numero":"686824172",
+    "filiere":"informatique",
+    "email":"mbroumsadja@gmail.com"
+}
